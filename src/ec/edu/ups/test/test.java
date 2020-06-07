@@ -17,16 +17,18 @@ public class test {
 		CapituloDAO cap = DAOFactory.getDaoFactory().getcapCapituloDAO();
 		AutorDAO au = DAOFactory.getDaoFactory().getauAutorDAO();
 		
-		Libro l = new Libro("el principito", "647236", 701);
+		Libro l = new Libro("el principito", "6", 701);
 		
-		Capitulo c = new Capitulo("ALGO", "NUEVO viaje", l);
+		Autor a  = new Autor("antuan", "frances");
 		
-		Autor a  = new Autor("antuan", "frances", c);
+		Capitulo c = new Capitulo(34, "el depredador", l, a);
+		
+		
 		
 		l.addCapitulos(c);
-		a.setCapitulo(c);
+		
 		lib.create(l);
-		au.create(a);
+		
 		
 		
 		

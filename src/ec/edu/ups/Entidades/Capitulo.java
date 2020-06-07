@@ -17,13 +17,15 @@ public class Capitulo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
-	private String nombre;
+	private int numero;
 	private String titulo;
 	@ManyToOne
 	@JoinColumn
 	private Libro libro;
-	@OneToOne(cascade = CascadeType.ALL,mappedBy = "capitulo")
+	@OneToOne (cascade = CascadeType.ALL)
+	@JoinColumn
 	private Autor autor;
+
 	
 
 	public Capitulo() {
@@ -31,13 +33,15 @@ public class Capitulo implements Serializable {
 	}
 
 
-	public Capitulo(String nombre, String titulo, Libro libro) {
+
+	public Capitulo(int numero, String titulo, Libro libro, Autor autor) {
 		super();
-		this.nombre = nombre;
+		this.numero = numero;
 		this.titulo = titulo;
 		this.libro = libro;
 		this.autor = autor;
 	}
+
 
 
 	public int getCodigo() {
@@ -45,19 +49,23 @@ public class Capitulo implements Serializable {
 	}
 
 
+
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 
 
-	public String getNombre() {
-		return nombre;
+
+	public int getNumero() {
+		return numero;
 	}
 
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
+
 
 
 	public String getTitulo() {
@@ -65,9 +73,11 @@ public class Capitulo implements Serializable {
 	}
 
 
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 
 
 	public Libro getLibro() {
@@ -75,9 +85,11 @@ public class Capitulo implements Serializable {
 	}
 
 
+
 	public void setLibro(Libro libro) {
 		this.libro = libro;
 	}
+
 
 
 	public Autor getAutor() {
@@ -85,10 +97,15 @@ public class Capitulo implements Serializable {
 	}
 
 
+
 	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
 
+
+	
+
+	
 
 //	@Override
 //	public String toString() {

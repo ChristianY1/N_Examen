@@ -15,25 +15,22 @@ public class Autor implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	private String nombre;
 	private String nacionalidad;
-	@OneToOne
-	@JoinColumn
+	@OneToOne(mappedBy = "autor")
 	private Capitulo capitulo;
-	
 
 	public Autor() {
 		
 	}
 
 
-	public Autor(String nombre, String nacionalidad, Capitulo capitulo) {
+	public Autor(String nombre, String nacionalidad) {
 		super();
 		this.nombre = nombre;
 		this.nacionalidad = nacionalidad;
-		this.capitulo = capitulo;
 	}
 
 
@@ -75,6 +72,12 @@ public class Autor implements Serializable {
 	public void setCapitulo(Capitulo capitulo) {
 		this.capitulo = capitulo;
 	}
+
+
+	
+
+
+	
 
 
 //	@Override

@@ -17,11 +17,12 @@ public class Libro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	private String nombre;
 	private String ISBN;
 	private int numPaginas;
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "libro")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "libro")
 	private Set<Capitulo> capitulos = new HashSet<Capitulo>();
 	
 	public Libro() {
